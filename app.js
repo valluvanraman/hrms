@@ -1,6 +1,6 @@
 var express = require('express');
 var app = express();
-
+const PORT = process.env.PORT || 80;
 var bodyParser = require("body-parser");
 app.use(bodyParser.urlencoded({ extended: false }));
 
@@ -14,6 +14,6 @@ app.post('/submit-student-data', function (req, res) {
     res.send(name + ' Submitted Successfully!');
 });
 
-var server = app.listen(5000, function () {
+var server = app.listen(PORT, function () {
     console.log('Node server is running..');
 });
