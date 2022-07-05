@@ -1,9 +1,13 @@
 {
+  "name":"hrms2022",
+  "version": "1.0.0",
   "main": "app.js",
   "dependencies": {
     "body-parser": "^1.20.0",
     "express": "^4.18.1"
   },
+  "author": "valluvan",
+  "license": "ISC",
   "engines": {
     "node": "14.x"
   }
