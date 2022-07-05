@@ -1,36 +1,22 @@
-var http = require('http'); // Import Node.js core module
 
-var server = http.createServer(function (req, res) {   //create web server
-    if (req.url == '/') { //check the URL of the current request
-        
-        // set response header
-        res.writeHead(200, { 'Content-Type': 'text/html' }); 
-        
-        // set response content    
-        res.write('<html><body><p>This is home Page.</p></body></html>');
-		//res.sendFile('index.html');
-        res.end();
-    
-    }
-    else if (req.url == "/student") {
-        
-        res.writeHead(200, { 'Content-Type': 'text/html' });
-        res.write('<html><body><p>This is student Page.</p></body></html>');
-        res.end();
-    
-    }
-    else if (req.url == "/admin") {
-        
-        res.writeHead(200, { 'Content-Type': 'text/html' });
-        res.write('<html><body><p>This is admin Page.</p></body></html>');
-        res.end();
-    
-    }
-    else
-        res.end('Invalid Request!');
+var express = require('express');
+var app = express();
 
+var bodyParser = require("body-parser");
+app.use(bodyParser.urlencoded({ extended: false }));
+
+app.get('/', function (req, res) {
+    res.sendFile(__dirname+'/index.html');
 });
-const PORT = process.env.PORT || 5000;
-server.listen(PORT); //6 - listen for any incoming requests
 
-console.log('Node.js web server at port '+PORT+' is running..')
+app.post('/submit-student-data', function (req, res) {
+    var name = req.body.firstName + ' ' + req.body.lastName;
+    
+    res.send(name + ' Submitted Successfully!');
+});
+
+const PORT = process.env.PORT || 5000;
+
+var server = app.listen(PORT,  "0.0.0.0", function () {
+    console.log('Node server is running..');
+});
