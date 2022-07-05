@@ -16,6 +16,6 @@ app.post('/submit-student-data', function (req, res) {
 
 const PORT = process.env.PORT || 5000;
 
-var server = app.listen(PORT, function () {
+var server = app.listen(process.env.PORT, function () {
     console.log('Node server is running..');
 });
