@@ -7,8 +7,5 @@
     "express": "^4.18.1"
   },
   "author": "valluvan",
-  "license": "ISC",
-  "engines": {
-    "node": "14.x"
-  }
+  "license": "ISC"
 }
